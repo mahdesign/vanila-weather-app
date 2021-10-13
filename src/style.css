@@ -33,6 +33,7 @@ li {
 }
 .overview {
   margin-bottom: 20px;
+  text-transform: capitalize;
 }
 .weather-tempreture img {
   width: 64px;
