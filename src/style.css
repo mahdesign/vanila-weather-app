@@ -51,3 +51,8 @@ li {
   font-style: 16px;
   top: -34px;
 }
+.weather-tempreture .active {
+  color: rgb(33, 33, 33);
+  cursor: default;
+  text-decoration: none;
+}
