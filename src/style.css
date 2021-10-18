@@ -56,3 +56,19 @@ li {
   cursor: default;
   text-decoration: none;
 }
+
+.weather-forcast {
+  margin-top: 20px;
+  text-align: center;
+  color: #000;
+}
+.weather-forcast-date {
+  font-size: 16px;
+  opacity: 0.5;
+}
+.weather-forcast-tempreture {
+  font-size: 13px;
+}
+.weather-forcast-tempreture-min {
+  opacity: 0.5;
+}
