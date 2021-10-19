@@ -21,6 +21,7 @@ function formatDate(timestamp) {
   let day = days[date.getDay()];
   return `${day} ${hours}:${minutes}`;
 }
+
 function displayTempreture(response) {
   let tempretureElement = document.querySelector("#tempreture");
   let cityElement = document.querySelector("#city");
@@ -42,17 +43,20 @@ function displayTempreture(response) {
   iconElement.setAttribute("alt", response.data.weather[0].description);
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
 }
+
 function search(city) {
   let apikey = "a710bd8bd76400c9658ef649d9e81728";
 
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}&units=metric`;
   axios.get(apiUrl).then(displayTempreture);
 }
+
 function handelSubmit(event) {
   event.preventDefault();
   let inputCityElement = document.querySelector("#input-city");
   search(inputCityElement.value);
 }
+
 function showFahrenheitTempreture(event) {
   event.preventDefault();
   let tempretureElement = document.querySelector("#tempreture");
@@ -69,6 +73,31 @@ function showCelciusTempreture(event) {
   let tempretureElement = document.querySelector("#tempreture");
   tempretureElement.innerHTML = Math.round(celcuiesTempreture);
 }
+
+function displayForcast() {
+  let forcastElemnt = document.querySelector("#forcast");
+  let forcastHTML = `<div class="row">`;
+  let days = ["Fri", "SAT", "SUN", "MON"];
+  days.forEach(function (day) {
+    forcastHTML =
+      forcastHTML +
+      `   <div class="col-2">
+            <div class="weather-forcast-date">${day}</div>
+              <img
+                  src="http://openweathermap.org/img/wn/01n@2x.png"
+                  alt=""
+                  width="42"
+             />
+            <div class="weather-forcast-tempreture">
+               <span class="weather-forcast-tempreture-max">18°</span>
+               <span class="weather-forcast-tempreture-min">12°</span>
+            </div>
+          </div>`;
+  });
+
+  forcastHTML = forcastHTML + `</div>`;
+  forcastElemnt.innerHTML = forcastHTML;
+}
 let celcuiesTempreture = null;
 let formElement = document.querySelector("#search-form");
 formElement.addEventListener("submit", handelSubmit);
@@ -78,3 +107,4 @@ fahrenheitLinkElement.addEventListener("click", showFahrenheitTempreture);
 let celciusLinkElement = document.querySelector("#celcius-link");
 celciusLinkElement.addEventListener("click", showCelciusTempreture);
 search("Tehran");
+displayForcast();
